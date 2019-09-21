@@ -1,6 +1,6 @@
 --***** CREAR BASE DE DATOS ************
 
-CREATE DATABASE C3
+CREATE DATABASE CRB
 
 --********************************** CETROS ****************************************
 CREATE TABLE Centros (
