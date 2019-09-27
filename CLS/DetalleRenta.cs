@@ -1,4 +1,4 @@
-class Detalle_renta  
+class DetalleRenta  
 {  
     public string id_renta { get; set; }  
     public int Consecutivo { get; set; }  
