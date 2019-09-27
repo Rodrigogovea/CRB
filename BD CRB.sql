@@ -59,7 +59,7 @@ ADD CONSTRAINT PK_Situaciones PRIMARY KEY NONCLUSTERED(id_situacion);
 GO
 --***********************************************************************************
 
----******************************* EQUIPOS *****************************************
+---******************************* ACTIVO FIJO *****************************************
 CREATE TABLE ActivoFijo (
 			id_activoFijo VARCHAR(20) NOT NULL,
 			id_equipos VARCHAR(5) NOT NULL,
@@ -78,11 +78,8 @@ ALTER TABLE ActivoFijo
 ADD CONSTRAINT FK_ActivoFijo_Equipos FOREIGN KEY (id_equipos)
       REFERENCES Equipos (id_equipos)
 ALTER TABLE ActivoFijo 
-ADD CONSTRAINT FK_ActivoFijo_Centros FOREIGN KEY (id_centro)
-      REFERENCES Lugares_centros (id_centro)
-ALTER TABLE ActivoFijo 
-ADD CONSTRAINT FK_ActivoFijo_Lugar FOREIGN KEY (id_lugar)
-      REFERENCES Lugares_centros (id_lugar)
+ADD CONSTRAINT FK_ActivoFijo_Lugar_Centros FOREIGN KEY (id_centro,id_lugar)
+      REFERENCES Lugares_centros (id_centro,id_lugar)
 ALTER TABLE ActivoFijo 
 ADD CONSTRAINT FK_Situacion FOREIGN KEY (id_situacion)
       REFERENCES situaciones (id_situacion)
