@@ -1,4 +1,4 @@
-class Ficha_tecnica  
+class FichaTecnica  
 {  
     public string id_activoFijo { get; set; }  
     public string idAtributo { get; set; }  
