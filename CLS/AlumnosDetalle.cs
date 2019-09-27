@@ -1,4 +1,4 @@
-class Alumnos_detalle  
+class AlumnosDetalle  
 {  
     public string No_Control { get; set; }  
     public string id_periodo { get; set; }  
