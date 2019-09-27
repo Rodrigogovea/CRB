@@ -1,0 +1,6 @@
+/Users/poncho/Projects/CRB/CRB_WEB/CRB/CRB/bin/CRB.dll
+/Users/poncho/Projects/CRB/CRB_WEB/CRB/CRB/bin/CRB.pdb
+/Users/poncho/Projects/CRB/CRB_WEB/CRB/CRB/obj/Debug/CRB.csprojAssemblyReference.cache
+/Users/poncho/Projects/CRB/CRB_WEB/CRB/CRB/obj/Debug/CRB.csproj.CoreCompileInputs.cache
+/Users/poncho/Projects/CRB/CRB_WEB/CRB/CRB/obj/Debug/CRB.dll
+/Users/poncho/Projects/CRB/CRB_WEB/CRB/CRB/obj/Debug/CRB.pdb
