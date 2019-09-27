@@ -85,15 +85,37 @@ ADD CONSTRAINT FK_Situacion FOREIGN KEY (id_situacion)
       REFERENCES situaciones (id_situacion)
 ----********************************************************************************** 
 
+---******************************* ATRIBUTOS *************************************
+CREATE TABLE Atributos(
+			idAtributo VARCHAR(5) NOT NULL,
+			Descripcion VARCHAR(500) NOT NULL,
+			estado VARCHAR(5) NOT NULL,
+			fechaMov DATETIME NOT NULL,
+			id_usuario_modifica VARCHAR(50)
+)
+ALTER TABLE Atributos 
+ADD CONSTRAINT PK_Atributos PRIMARY KEY NONCLUSTERED (idAtributo);
+GO
+----*******************************************************************************
+
 ---******************************* FICHA TECNICA *************************************
 CREATE TABLE Ficha_tecnica(
 				id_activoFijo VARCHAR(20) NOT NULL,
-				id_atributo VARCHAR(10) NOT NULL,
+				idAtributo VARCHAR(5) NOT NULL,
 				Descripcion VARCHAR(500) NOT NULL,
 				estado INT NOT NULL,
 				fechaMov DATETIME NOT NULL,
 				id_usuario_modifica VARCHAR(50) NOT NULL
 				)
+ALTER TABLE Ficha_tecnica 
+ADD CONSTRAINT PK_Ficha_tecnica PRIMARY KEY NONCLUSTERED (id_activoFijo,idAtributo);
+GO
+ALTER TABLE Ficha_tecnica 
+ADD CONSTRAINT FK_Ficha_tecnica_activoFijo FOREIGN KEY (id_activoFijo)
+      REFERENCES ActivoFijo (id_activoFijo)
+ALTER TABLE Ficha_tecnica 
+ADD CONSTRAINT FK_Ficha_tecnica_idAtributo FOREIGN KEY (idAtributo)
+      REFERENCES Atributos (idAtributo)
 ----********************************************************************************** 
 
 ---******************************* CARRERAS *****************************************
