@@ -1,4 +1,4 @@
-class Activofijo  
+class ActivoFijo  
 {  
     public string id_activoFijo { get; set; }  
     public string id_equipos { get; set; }  
