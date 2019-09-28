@@ -354,3 +354,23 @@ ADD CONSTRAINT FK_Incidentes_Detalle_Renta FOREIGN KEY (id_incidente)
       REFERENCES Incidentes  (id_incidente)
 ----***********************************************************************************
 
+CREATE TABLE Rol(
+		idRol VARCHAR(5) NOT NULL,
+		Descripcion VARCHAR(500) NOT NULL,
+		estado VARCHAR(5) NOT NULL,
+		fechaMov DATETIME NOT NULL,
+		id_usuario_modifica VARCHAR(50)
+)
+ALTER TABLE Rol 
+ADD CONSTRAINT PK_Rol PRIMARY KEY NONCLUSTERED (idRol);
+GO
+---****************************** USUARIOS ***************************************
+CREATE TABLE Usuarios(
+		idUsuario VARCHAR(20)NOT NULL,
+		nombre VARCHAR(500) NOT NULL,
+		password VARCHAR(20) NOT NULL,
+		
+		estado VARCHAR(5) NOT NULL,
+		fechaMov DATETIME NOT NULL,
+		id_usuario_modifica VARCHAR(50)
+)
