@@ -4,3 +4,11 @@
 /Users/poncho/Projects/CRB/CRB_WEB/CRB/CRB/obj/Debug/CRB.csproj.CoreCompileInputs.cache
 /Users/poncho/Projects/CRB/CRB_WEB/CRB/CRB/obj/Debug/CRB.dll
 /Users/poncho/Projects/CRB/CRB_WEB/CRB/CRB/obj/Debug/CRB.pdb
+/Users/poncho/Projects/web/CRB_WEB/CRB/bin/CRB.dll
+/Users/poncho/Projects/web/CRB_WEB/CRB/bin/CRB.pdb
+/Users/poncho/Projects/web/CRB_WEB/CRB/bin/System.Data.SqlClient.dll
+/Users/poncho/Projects/web/CRB_WEB/CRB/bin/System.Data.SqlClient.xml
+/Users/poncho/Projects/web/CRB_WEB/CRB/obj/Debug/CRB.csprojAssemblyReference.cache
+/Users/poncho/Projects/web/CRB_WEB/CRB/obj/Debug/CRB.csproj.CopyComplete
+/Users/poncho/Projects/web/CRB_WEB/CRB/obj/Debug/CRB.dll
+/Users/poncho/Projects/web/CRB_WEB/CRB/obj/Debug/CRB.pdb

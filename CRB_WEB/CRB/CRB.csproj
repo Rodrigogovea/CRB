@@ -41,6 +41,7 @@
     <Content Include="Web.config" />
     <Content Include="Default.aspx" />
     <Content Include="packages.config" />
+    <Content Include="login.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Global.asax.cs">
@@ -53,9 +54,18 @@
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="CLS\CLS_bd.cs" />
+    <Compile Include="login.aspx.cs">
+      <DependentUpon>login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="login.aspx.designer.cs">
+      <DependentUpon>login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MOD\MOD_Utilerias.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="CLS\" />
+    <Folder Include="images\" />
+    <Folder Include="MOD\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
