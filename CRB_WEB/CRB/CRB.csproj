@@ -46,6 +46,10 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="CLS\CLS_bd.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="CLS\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
