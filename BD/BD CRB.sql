@@ -184,9 +184,25 @@ ADD CONSTRAINT PK_Grupos PRIMARY KEY NONCLUSTERED (id_grupo);
 GO
 ----********************************************************************************** 
 
+---******************************* ROL PERSONAS ********************************************
+CREATE TABLE Roles(
+		idRoles VARCHAR(20) NOT NULL,
+		Descripcion VARCHAR(500) NOT NULL,
+		estado VARCHAR(5) NOT NULL,
+		fechaMov DATETIME NOT NULL,
+		id_usuario_modifica VARCHAR(50)
+)
+ALTER TABLE Roles 
+ADD CONSTRAINT PK_Roles PRIMARY KEY NONCLUSTERED (idRoles);
+GO
+----********************************************************************************** 
+
+
 ---******************************* ALUMNOS *******************************************
-CREATE TABLE Alummno (
+CREATE TABLE Personas (
 			No_Control VARCHAR(20) NOT NULL,
+			Firma VARCHAR(MAX) NOT NULL,
+			idRoles VARCHAR(5) NOT NULL,
 			Nombre VARCHAR(500) NOT NULL,
 			curp VARCHAR(20) NOT NULL,
 			nacionalidad VARCHAR(50) NOT NULL,
@@ -200,13 +216,16 @@ CREATE TABLE Alummno (
 			fechaMov DATETIME NOT NULL,
 			id_usuario_modifica VARCHAR(50)
 						)
-ALTER TABLE Alummno 
+ALTER TABLE Personas 
 ADD CONSTRAINT PK_No_Control PRIMARY KEY NONCLUSTERED (No_Control);
 GO
+ALTER TABLE Personas 
+ADD CONSTRAINT FK_Personas_RolPersonas FOREIGN KEY (idRoles)
+REFERENCES Roles (idRoles)
 ----********************************************************************************** 
 
----******************************* ALUMNOS_DETALLE *******************************************
-CREATE TABLE Alumnos_detalle(
+---******************************* Personas_detalle *******************************************
+CREATE TABLE Personas_detalle(
 			No_Control VARCHAR(20) NOT NULL,
 			id_periodo VARCHAR(5) NOT NULL,
 			id_semestre VARCHAR(5) NOT NULL,
@@ -217,26 +236,26 @@ CREATE TABLE Alumnos_detalle(
 			fechaMov DATETIME NOT NULL,
 			id_usuario_modifica VARCHAR(50)				
 )
-ALTER TABLE Alumnos_detalle 
-ADD CONSTRAINT PK_Alumnos_detalle PRIMARY KEY NONCLUSTERED (No_Control,id_periodo);
+ALTER TABLE Personas_detalle 
+ADD CONSTRAINT PK_Personas_detalle PRIMARY KEY NONCLUSTERED (No_Control,id_periodo);
 GO
-ALTER TABLE Alumnos_detalle 
-ADD CONSTRAINT FK_Alumnos_detalle_Alumno FOREIGN KEY (No_Control)
-REFERENCES Alummno (No_Control)
-ALTER TABLE Alumnos_detalle 
-ADD CONSTRAINT FK_Alumnos_detalle_perido FOREIGN KEY (id_periodo)
+ALTER TABLE Personas_detalle 
+ADD CONSTRAINT FK_Personas_detalle_Alumno FOREIGN KEY (No_Control)
+REFERENCES Personas (No_Control)
+ALTER TABLE Personas_detalle 
+ADD CONSTRAINT FK_Personas_detalle_perido FOREIGN KEY (id_periodo)
 REFERENCES Periodo (id_periodo)
-ALTER TABLE Alumnos_detalle 
-ADD CONSTRAINT FK_Alumnos_detalle_semestre FOREIGN KEY (id_semestre)
+ALTER TABLE Personas_detalle 
+ADD CONSTRAINT FK_Personas_detalle_semestre FOREIGN KEY (id_semestre)
 REFERENCES Semestre (id_semestre)
-ALTER TABLE Alumnos_detalle 
-ADD CONSTRAINT FK_Alumnos_detalle_grupo FOREIGN KEY (id_grupo)
+ALTER TABLE Personas_detalle 
+ADD CONSTRAINT FK_Personas_detalle_grupo FOREIGN KEY (id_grupo)
 REFERENCES Grupos (id_grupo)
-ALTER TABLE Alumnos_detalle 
-ADD CONSTRAINT FK_Alumnos_detalle_turno FOREIGN KEY (id_turno)
+ALTER TABLE Personas_detalle 
+ADD CONSTRAINT FK_Personas_detalle_turno FOREIGN KEY (id_turno)
 REFERENCES Turno (id_turno)
-ALTER TABLE Alumnos_detalle 
-ADD CONSTRAINT FK_Alumnos_detalle_carrera FOREIGN KEY (id_carrera)
+ALTER TABLE Personas_detalle 
+ADD CONSTRAINT FK_Personas_detalle_carrera FOREIGN KEY (id_carrera)
 REFERENCES Carrera (id_carrera)
 ----******************************************************************************************
 
@@ -255,7 +274,7 @@ GO
 
 ALTER TABLE Recargas 
 ADD CONSTRAINT FK_Recargas_Alumno FOREIGN KEY (No_Control)
-REFERENCES Alummno (No_Control)
+REFERENCES Personas (No_Control)
 ----********************************************************************************** 
 
 ---*************************** TIPOS_IMPRESIONES **************************************
@@ -289,7 +308,7 @@ GO
 
 ALTER TABLE impresiones 
 ADD CONSTRAINT FK_Impresiones_Alumno FOREIGN KEY (No_Control)
-      REFERENCES Alummno (No_Control)
+      REFERENCES Personas (No_Control)
 ALTER TABLE impresiones 
 ADD CONSTRAINT FK_Impresiones_id_tipo_impresiones FOREIGN KEY (id_tipo_impresiones)
       REFERENCES Tipo_impresiones (id_tipo_impresiones)
@@ -317,7 +336,7 @@ ADD CONSTRAINT FK_Renta_ActivoFijo FOREIGN KEY (id_activoFijo)
       REFERENCES ActivoFijo (id_activoFijo)
 ALTER TABLE Renta 
 ADD CONSTRAINT FK_Renta_Alumno FOREIGN KEY (No_Control)
-      REFERENCES Alummno (No_Control)
+      REFERENCES Personas (No_Control)
 ALTER TABLE Renta 
 ADD CONSTRAINT FK_Renta_Periodo FOREIGN KEY (id_periodo)
       REFERENCES Periodo (id_periodo)
@@ -354,23 +373,19 @@ ADD CONSTRAINT FK_Incidentes_Detalle_Renta FOREIGN KEY (id_incidente)
       REFERENCES Incidentes  (id_incidente)
 ----***********************************************************************************
 
-CREATE TABLE Rol(
-		idRol VARCHAR(5) NOT NULL,
-		Descripcion VARCHAR(500) NOT NULL,
-		estado VARCHAR(5) NOT NULL,
-		fechaMov DATETIME NOT NULL,
-		id_usuario_modifica VARCHAR(50)
-)
-ALTER TABLE Rol 
-ADD CONSTRAINT PK_Rol PRIMARY KEY NONCLUSTERED (idRol);
-GO
 ---****************************** USUARIOS ***************************************
 CREATE TABLE Usuarios(
 		idUsuario VARCHAR(20)NOT NULL,
 		nombre VARCHAR(500) NOT NULL,
 		password VARCHAR(20) NOT NULL,
-		
 		estado VARCHAR(5) NOT NULL,
 		fechaMov DATETIME NOT NULL,
 		id_usuario_modifica VARCHAR(50)
 )
+ALTER TABLE Usuarios 
+ADD CONSTRAINT PK_Usuarios PRIMARY KEY NONCLUSTERED (idUsuario);
+GO
+ALTER TABLE Rol 
+ADD CONSTRAINT FK_Usuarios_Rol FOREIGN KEY (idRol)
+      REFERENCES Rol  (idRol)
+----***********************************************************************************
