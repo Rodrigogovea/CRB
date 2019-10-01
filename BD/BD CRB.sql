@@ -380,6 +380,7 @@ CREATE TABLE Usuarios(
 		idUsuario VARCHAR(20)NOT NULL,
 		nombre VARCHAR(500) NOT NULL,
 		password VARCHAR(20) NOT NULL,
+		idRoles VARCHAR(20) NOT NULL,
 		estado VARCHAR(5) NOT NULL,
 		fechaMov DATETIME NOT NULL,
 		id_usuario_modifica VARCHAR(50)
@@ -387,7 +388,7 @@ CREATE TABLE Usuarios(
 ALTER TABLE Usuarios 
 ADD CONSTRAINT PK_Usuarios PRIMARY KEY NONCLUSTERED (idUsuario);
 GO
-ALTER TABLE Rol 
-ADD CONSTRAINT FK_Usuarios_Rol FOREIGN KEY (idRol)
-      REFERENCES Rol  (idRol)
+ALTER TABLE Roles 
+ADD CONSTRAINT FK_Usuarios_Roles FOREIGN KEY (idRoles)
+      REFERENCES Roles  (idRoles)
 ----***********************************************************************************
