@@ -2,11 +2,13 @@
 
 CREATE DATABASE CRB
 
+USE CRB
+
 --********************************** CETROS ****************************************
 CREATE TABLE Centros (
 		id_centro VARCHAR(5) NOT NULL,
 		nombre VARCHAR(500) NOT NULL,
-		estado INT NOT NULL,
+		estado VARCHAR(5) NOT NULL,
 		fechaMov DATETIME NOT NULL,
 		id_usuario_modifica VARCHAR(50) NOT NULL
 						)
@@ -19,7 +21,7 @@ GO
 CREATE TABLE Lugares_centros(
 				id_centro VARCHAR(5) NOT NULL,
 				id_lugar VARCHAR(5) NOT NULL,
-				estado INT NOT NULL,
+				estado VARCHAR(5) NOT NULL,
 				fechaMov DATETIME NOT NULL,
 				id_usuario_modifica VARCHAR(50) NOT NULL
 								)
@@ -36,7 +38,7 @@ ADD CONSTRAINT FK_Centros FOREIGN KEY (id_centro)
 CREATE TABLE Equipos (
 				id_equipos VARCHAR(5) NOT NULL,
 				Descripcion VARCHAR(500) NOT NULL,
-				estado INT NOT NULL,
+				estado VARCHAR(5) NOT NULL,
 				fechaMov DATETIME NOT NULL,
 				id_usuario_modifica VARCHAR(50)
 						)
@@ -50,7 +52,7 @@ CREATE TABLE situaciones
 (
 	id_situacion VARCHAR(5)  NOT NULL, 
 	Descripcion VARCHAR(500) NOT NULL,
-	estado INT NOT NULL,
+	estado VARCHAR(5) NOT NULL,
 	fechaMov DATETIME NOT NULL,
 	id_usuario_modifica VARCHAR(50)
 )
@@ -66,7 +68,7 @@ CREATE TABLE ActivoFijo (
 			id_centro VARCHAR(5) NOT NULL,
 			id_lugar VARCHAR(5) NOT NULL,
 			id_situacion VARCHAR(5) NOT NULL,
-			estado INT NOT NULL,
+			estado VARCHAR(5) NOT NULL,
 			fechaMov DATETIME NOT NULL,
 			id_usuario_modifica VARCHAR(50)
 						)
@@ -103,7 +105,7 @@ CREATE TABLE Ficha_tecnica(
 				id_activoFijo VARCHAR(20) NOT NULL,
 				idAtributo VARCHAR(5) NOT NULL,
 				Descripcion VARCHAR(500) NOT NULL,
-				estado INT NOT NULL,
+				estado VARCHAR(5) NOT NULL,
 				fechaMov DATETIME NOT NULL,
 				id_usuario_modifica VARCHAR(50) NOT NULL
 				)
