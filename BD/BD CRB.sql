@@ -388,7 +388,22 @@ CREATE TABLE Usuarios(
 ALTER TABLE Usuarios 
 ADD CONSTRAINT PK_Usuarios PRIMARY KEY NONCLUSTERED (idUsuario);
 GO
-ALTER TABLE Roles 
+ALTER TABLE Usuarios 
 ADD CONSTRAINT FK_Usuarios_Roles FOREIGN KEY (idRoles)
       REFERENCES Roles  (idRoles)
+----***********************************************************************************
+
+---****************************** SESIONES ********************************************
+CREATE TABLE Sesiones(
+		idSesion INT IDENTITY(1,1) NOT NULL,
+		idUsuario VARCHAR(20)NOT NULL,
+		Ip  VARCHAR(20)NOT NULL,
+		fechaSesion DATETIME NOT NULL,
+)
+ALTER TABLE Sesiones 
+ADD CONSTRAINT PK_Sesiones PRIMARY KEY NONCLUSTERED (idSesion);
+GO
+ALTER TABLE Sesiones 
+ADD CONSTRAINT FK_Sesiones_Usuarios FOREIGN KEY (idUsuario)
+      REFERENCES Usuarios  (idUsuario)
 ----***********************************************************************************
