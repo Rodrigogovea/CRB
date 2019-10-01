@@ -379,7 +379,7 @@ ADD CONSTRAINT FK_Incidentes_Detalle_Renta FOREIGN KEY (id_incidente)
 CREATE TABLE Usuarios(
 		idUsuario VARCHAR(20)NOT NULL,
 		nombre VARCHAR(500) NOT NULL,
-		password VARCHAR(20) NOT NULL,
+		password VARCHAR(50) NOT NULL,
 		idRoles VARCHAR(20) NOT NULL,
 		estado VARCHAR(5) NOT NULL,
 		fechaMov DATETIME NOT NULL,
