@@ -202,7 +202,7 @@ GO
 CREATE TABLE Personas (
 			No_Control VARCHAR(20) NOT NULL,
 			Firma VARCHAR(MAX) NOT NULL,
-			idRoles VARCHAR(5) NOT NULL,
+			idRoles VARCHAR(20) NOT NULL,
 			Nombre VARCHAR(500) NOT NULL,
 			curp VARCHAR(20) NOT NULL,
 			nacionalidad VARCHAR(50) NOT NULL,
