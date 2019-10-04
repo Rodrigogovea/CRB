@@ -109,3 +109,32 @@ BEGIN
       END
 END
 /******************************************************************************************************/
+
+
+/****** Object:  StoredProcedure [dbo].[RecuperaComputadorasCentro]    ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER PROCEDURE [dbo].[RecuperaComputadorasCentro]
+	  @Centro VARCHAR(5)
+AS
+BEGIN
+      SET NOCOUNT ON;
+		
+			SELECT  
+					e.Descripcion,
+					ac.id_lugar, 
+					s.Descripcion
+				FROM ActivoFijo AS ac,
+						Centros AS c,
+						situaciones AS s,
+						Equipos AS e 
+				WHERE (c.id_centro=@Centro AND ac.estado='A')
+					AND (ac.id_centro=c.id_centro)
+					AND (ac.id_situacion=s.id_situacion)
+					AND (ac.id_equipos=e.id_equipos)
+			ORDER BY id_lugar
+
+END
+/******************************************************************************************************/
