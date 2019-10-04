@@ -78,8 +78,8 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 ALTER PROCEDURE [dbo].[Valida_Usuario]
-      @Username NVARCHAR(20),
-      @Password NVARCHAR(20),
+      @Username VARCHAR(50),
+      @Password VARCHAR(50),
 	  @IP NVARCHAR(20)
 AS
 BEGIN
