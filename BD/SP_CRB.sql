@@ -68,3 +68,44 @@ SET @Result = @Result  + '
 print @Result  
 END
 /******************************************************************************************************/
+
+/****** Object:  StoredProcedure [dbo].[Valida_Usuario]     ******/
+USE [CRB]
+GO
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER PROCEDURE [dbo].[Valida_Usuario]
+      @Username NVARCHAR(20),
+      @Password NVARCHAR(20),
+	  @IP NVARCHAR(20)
+AS
+BEGIN
+      SET NOCOUNT ON;
+      DECLARE 
+			@UserId VARCHAR(50), 
+			@LastLoginDate DATETIME
+     
+      SELECT @UserId = idUsuario, @LastLoginDate = fechaMov
+      FROM Usuarios WHERE (idUsuario = @Username) AND ([Password] = @Password) AND (estado='A')
+     
+      IF @UserId IS NOT NULL
+      BEGIN
+            IF EXISTS(SELECT idUsuario FROM Usuarios WHERE idUsuario = @UserId AND (estado='A'))
+            BEGIN
+                  INSERT INTO sesiones (idUsuario, ip, fechaSesion) VALUES (@Username, @ip, GETDATE())
+                  SELECT @UserId [UserId] -- USUARIO VALIDO
+            END
+            ELSE
+            BEGIN
+                  SELECT 2 -- USUARIO INACTIVO
+            END
+      END
+      ELSE
+      BEGIN
+            SELECT 1 -- USUARIO INCORRECTO
+      END
+END
+/******************************************************************************************************/
