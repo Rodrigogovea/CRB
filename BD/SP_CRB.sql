@@ -123,9 +123,9 @@ BEGIN
       SET NOCOUNT ON;
 		
 			SELECT  
-					e.Descripcion,
-					ac.id_lugar, 
-					s.Descripcion
+					e.Descripcion as Equipo,
+					ac.id_lugar as Lugar, 
+					s.Descripcion as Situacion
 				FROM ActivoFijo AS ac,
 						Centros AS c,
 						situaciones AS s,
