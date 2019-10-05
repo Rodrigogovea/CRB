@@ -112,6 +112,9 @@ END
 
 
 /****** Object:  StoredProcedure [dbo].[RecuperaComputadorasCentro]    ******/
+USE [CRB]
+GO
+/****** Object:  StoredProcedure [dbo].[RecuperaComputadorasCentro]    Script Date: 04/10/2019 02:33:43 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -125,7 +128,18 @@ BEGIN
 			SELECT  
 					e.Descripcion as Equipo,
 					ac.id_lugar as Lugar, 
-					s.Descripcion as Situacion
+					CASE
+						WHEN s.Descripcion='DISPONIBLE' THEN '../images/Centro/Disponible.jpeg'
+						WHEN s.Descripcion='OCUPADO' THEN '../images/Centro/Ocupado.jpeg'
+						WHEN s.Descripcion='REPARACION' THEN '../images/Centro/Reparacion.jpeg'
+					END as situacion,
+					(SELECT STUFF(
+							(SELECT at.Descripcion + ' ' + ft.Descripcion + ' '
+						FROM Ficha_tecnica as ft, Atributos as at
+						where ft.idAtributo=at.idAtributo
+						and ft.id_activoFijo=e.id_equipos
+							FOR XML PATH ('')),
+						1,2, '')) as fichaTecnica
 				FROM ActivoFijo AS ac,
 						Centros AS c,
 						situaciones AS s,
@@ -137,4 +151,5 @@ BEGIN
 			ORDER BY id_lugar
 
 END
+
 /******************************************************************************************************/
