@@ -1,0 +1,5 @@
+C:\Users\90ALEGORRETA\Pictures\CRB\CRB\CRB\bin\CRB.dll.config
+C:\Users\90ALEGORRETA\Pictures\CRB\CRB\CRB\bin\CRB.dll
+C:\Users\90ALEGORRETA\Pictures\CRB\CRB\CRB\bin\CRB.pdb
+C:\Users\90ALEGORRETA\Pictures\CRB\CRB\CRB\obj\Debug\CRB.dll
+C:\Users\90ALEGORRETA\Pictures\CRB\CRB\CRB\obj\Debug\CRB.pdb
